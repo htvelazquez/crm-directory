@@ -189,6 +189,7 @@ class SnapshotsController extends Controller
 
         if (!empty($request->languages)) {
             foreach($request->languages as $languageItem) {
+
                 $languageData = [
                     'name' => $this->normalizeString($languageItem['name']),
                     'label' => $languageItem['name']
@@ -199,6 +200,7 @@ class SnapshotsController extends Controller
                 $snapshotLanguageData = [
                     'snapshot_id' => $snapshot->id,
                     'language_id' => $language->id,
+                    'proficiency' => (!empty($languageItem['proficiency']))? $languageItem['proficiency'] : null
                 ];
 
                 $snapshotLanguage = SnapshotLanguage::create($snapshotLanguageData);

@@ -149,6 +149,7 @@ class Baseline extends Migration
             $table->increments('id');
             $table->integer('snapshot_id')->unsigned();
             $table->integer('language_id')->unsigned();
+            $table->string('proficiency',32)->nullable();
             $table->timestamps();
 
             $table->foreign('snapshot_id')->references('id')->on('snapshots');
@@ -159,7 +160,7 @@ class Baseline extends Migration
             $table->increments('id');
             $table->integer('snapshot_id')->unsigned();
             $table->string('phone');
-            $table->integer('type')->nullable(); //
+            $table->integer('type')->nullable();
             $table->timestamps();
 
             $table->foreign('snapshot_id')->references('id')->on('snapshots');
