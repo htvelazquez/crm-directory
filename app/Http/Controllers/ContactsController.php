@@ -243,33 +243,29 @@ class ContactsController extends Controller
         }
 
         $sql = "
-        SELECT
-        c.linkedin_id `contactLId`,
-        met.name,
-        met.firstName,
-        met.lastName,
-        sex.jobTitle,
-        sex.from,
-        com.label,
-        com.linkedin_id `companyLId`,
-        com.link,
-        sex.created_at `createdAt`
-        FROM snapshot_experiences sex
-        INNER JOIN (
             SELECT
-            MAX(id) id,
-            contact_id
-            FROM snapshots
-            GROUP BY contact_id
-        ) s
-        ON (s.id = sex.snapshot_id)
-        INNER JOIN contacts c
-        ON (c.id = s.contact_id)
-        INNER JOIN companies com
-        ON (com.id = sex.company_id)
-        INNER JOIN snapshot_metadatas met
-        ON (met.snapshot_id = s.id)
-        WHERE `to` IS NULL
+                c.linkedin_id `contactLId`,
+                met.firstName,
+                met.lastName,
+                met.publicURL,
+                sex.jobTitle,
+                com.label company,
+                sex.from,
+        		loc.label location,
+                com.linkedin_id `companyLId`,
+                com.link,
+                sex.created_at `createdAt`
+            FROM snapshot_experiences sex
+            INNER JOIN (
+                SELECT MAX(id) id, contact_id
+                FROM snapshots
+                GROUP BY contact_id
+            ) s ON (s.id = sex.snapshot_id)
+            INNER JOIN contacts c ON (c.id = s.contact_id)
+            INNER JOIN companies com ON (com.id = sex.company_id)
+            INNER JOIN snapshot_metadatas met ON (met.snapshot_id = s.id)
+            INNER JOIN locations loc ON (met.location_id = loc.id)
+            WHERE `to` IS NULL
         $whereStart
         $whereEnd";
 
@@ -287,7 +283,7 @@ class ContactsController extends Controller
         return response()->json($return);
     }
 
-    public function listDownload(Request $request) {
+    public function download(Request $request) {
         $company = $request->company;
         $relevance = $request->relevance;
         $start = $request->start;
