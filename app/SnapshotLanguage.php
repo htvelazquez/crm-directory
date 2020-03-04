@@ -9,7 +9,8 @@ class SnapshotLanguage extends Model
     protected $fillable = [
         'snapshot_id',
         'language_id',
-        'created_at', 
+        'proficiency',
+        'created_at',
         'updated_at'
     ];
 

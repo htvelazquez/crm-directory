@@ -100,6 +100,8 @@ class SnapshotsController extends Controller
                 'name'          => $request->name,
                 'firstName'     => $request->firstName,
                 'lastName'      => $request->lastName,
+                'publicURL'     => $request->publicProfileURL,
+                'premium'       => (!empty($request->premiumAccount) && $request->premiumAccount === TRUE),
                 'location_id'   => $location->id,
                 'summary'       => strlen($request->summary) > 255 ? substr($request->summary,0,252)."..." : $request->summary,
                 'totalConnections' => (int) $request->totalConnections,
@@ -148,6 +150,8 @@ class SnapshotsController extends Controller
 
                 if (!empty($education['schoolName'])) {
 
+                    // @// TODO: fieldOfStudy: "Relaciones del trabajo"
+
                     $schoolData = [
                         'name'  => $this->normalizeString($education['schoolName']),
                         'label' => $education['schoolName'],
@@ -162,8 +166,8 @@ class SnapshotsController extends Controller
                     'school_id'     => !empty($school) ? $school->id : null,
                     'study_field_id'=> !empty($studyField) ? $studyField->id : null,
                     'degree'        => !empty($education['degree']) ? $education['degree'] : null,
-                    'from'          => (!empty($education['startedOn']) && !empty($education['startedOn']['year'])) ? $education['startedOn']['year'] . '-01-01 00:00:00' : null,
-                    'to'            => (!empty($education['endedOn']) && !empty($education['endedOn']['year'])) ? $education['endedOn']['year'] . '-01-01 00:00:00' : null,
+                    'from'          => (!empty($education['from'])) ? $education['from'] . '-01-01 00:00:00' : null,
+                    'to'            => (!empty($education['to'])) ? $education['to'] . '-01-01 00:00:00' : null,
                 ];
                 $snapshotEducation = SnapshotEducation::create($snapshotEducationData);
             }
@@ -189,6 +193,7 @@ class SnapshotsController extends Controller
 
         if (!empty($request->languages)) {
             foreach($request->languages as $languageItem) {
+
                 $languageData = [
                     'name' => $this->normalizeString($languageItem['name']),
                     'label' => $languageItem['name']
@@ -199,6 +204,7 @@ class SnapshotsController extends Controller
                 $snapshotLanguageData = [
                     'snapshot_id' => $snapshot->id,
                     'language_id' => $language->id,
+                    'proficiency' => (!empty($languageItem['proficiency']))? $languageItem['proficiency'] : null
                 ];
 
                 $snapshotLanguage = SnapshotLanguage::create($snapshotLanguageData);
