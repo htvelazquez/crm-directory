@@ -16,6 +16,8 @@ class SnapshotMetadata extends Model
         'name',
         'firstName',
         'lastName',
+        'publicURL',
+        'premium',
         'created_at',
         'updated_at'
     ];
