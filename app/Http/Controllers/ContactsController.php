@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use App\Http\Requests\StoreContact;
-use App\Services\ServiceInventoryService;
+use App\Services\ContactsService;
 use App\Contact;
 use App\Snapshot;
 use App\Company;
@@ -22,6 +22,8 @@ use App\Skill;
 use App\SnapshotSkill;
 use App\Language;
 use App\SnapshotLanguage;
+use App\Label;
+use App\LabelContact;
 
 class ContactsController extends Controller
 {
@@ -85,8 +87,7 @@ class ContactsController extends Controller
                         'jobTitle'      => $experience['jobTitle'],
                         'from'          => date('Y-m-d', strtotime($experience['from'])),
                         'to'            => !empty($experience['to']) ? date('Y-m-d', strtotime($experience['to'])) : null,
-                        'company_id'    => $company->id,
-                        'relevance'     => empty($experience['to'])? $this->getJobTitleRelevance($experience['jobTitle']) : null
+                        'company_id'    => $company->id
                     ];
 
                     $snapshotExperience = SnapshotExperience::create($experienceData);
@@ -242,40 +243,38 @@ class ContactsController extends Controller
             $whereEnd = "AND sex.created_at <= '$end'";
         }
 
-        $sql = "
-            SELECT
-                c.linkedin_id `contactLId`,
-                met.firstName,
-                met.lastName,
-                met.publicURL,
-                sex.jobTitle,
-                com.label company,
-                sex.from,
-        		loc.label location,
-                com.linkedin_id `companyLId`,
-                com.link,
-                sex.created_at `createdAt`
-            FROM snapshot_experiences sex
+        $selectData = "SELECT s.id snapshot_id, s.contact_id, met.firstName, met.lastName, met.publicURL, sex.jobTitle, com.label company, sex.from, loc.label location, com.linkedin_id `companyLId`, com.link, sex.created_at `createdAt` ";
+        $selectCount = "SELECT COUNT(*) `tot` ";
+
+        $sql = "FROM account_contacts ac
             INNER JOIN (
-                SELECT MAX(id) id, contact_id
+            	SELECT MAX(id) id, contact_id
                 FROM snapshots
                 GROUP BY contact_id
-            ) s ON (s.id = sex.snapshot_id)
-            INNER JOIN contacts c ON (c.id = s.contact_id)
+            ) s ON (s.contact_id = ac.contact_id)
+            INNER JOIN snapshot_experiences sex ON (sex.snapshot_id = s.id AND sex.main_position IS TRUE)
             INNER JOIN companies com ON (com.id = sex.company_id)
             INNER JOIN snapshot_metadatas met ON (met.snapshot_id = s.id)
             INNER JOIN locations loc ON (met.location_id = loc.id)
-            WHERE `to` IS NULL
+            WHERE ac.account_id = 1
         $whereStart
         $whereEnd";
 
-        $dataTotal = DB::select($sql);
+        $dataTotal = DB::select($selectCount.$sql);
+        $total = (!empty($dataTotal[0]->tot))? $dataTotal[0]->tot : 0;
 
         $sql .= " LIMIT $offset, $limit;";
 
-        $data = DB::select($sql);
+        $data = ($total > 0)? DB::select($selectData.$sql) : null;
 
-        $return['total'] = count($dataTotal);
+        if (!empty($data)){
+            foreach ($data as $contact) {
+                $contact->labels = ContactsService::getInstance()->getLabelsByAccount($contact->contact_id, 1);
+                $contact->languages = ContactsService::getInstance()->getLanguagesBySnapshot($contact->snapshot_id);
+            }
+        }
+
+        $return['total'] = $total;
         $return['contacts'] = $data;
         $return['page'] = $page;
         $return['limit'] = $limit;
@@ -381,11 +380,6 @@ class ContactsController extends Controller
 
         $string = preg_replace("/[\s_]/", "-", $string);
         return $string;
-    }
-
-    protected function getJobTitleRelevance( $jobTitle )
-    {
-        return ServiceInventoryService::getInstance()->getJobTitleRelevance( $jobTitle );
     }
 
 }

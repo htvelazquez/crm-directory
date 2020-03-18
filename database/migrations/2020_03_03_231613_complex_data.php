@@ -49,6 +49,7 @@ class ComplexData extends Migration
         Schema::dropIfExists('languages_metadatas');
 
         Schema::table('snapshot_metadatas', function ($table) {
+            $table->dropColumn('premium');
             $table->dropColumn('publicURL');
         });
     }
