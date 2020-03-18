@@ -385,7 +385,7 @@ class LanguagesMetadataSeeder extends Seeder
             	'icon' => ''
             ],
             [
-            	'name' => 'Interlingua (International Auxiliary Language Association)',
+            	'name' => 'Interlingua',
             	'family' => 'Constructed',
             	'iso2code' => 'ia',
             	'icon' => ''
@@ -727,7 +727,7 @@ class LanguagesMetadataSeeder extends Seeder
             	'icon' => ''
             ],
             [
-            	'name' => 'Church Slavic, Old Slavonic, Church Slavonic, Old Bulgarian, Old Church Slavonic',
+            	'name' => 'Church Slavic, Old Slavonic, Old Bulgarian',
             	'family' => 'Indo-European',
             	'iso2code' => 'cu',
             	'icon' => ''
