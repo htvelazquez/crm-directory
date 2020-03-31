@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use App\Http\Requests\StoreContact;
-use App\Services\ServiceInventoryService;
+use App\Services\ContactsService;
 use App\Contact;
 use App\Snapshot;
 use App\Company;
@@ -22,6 +22,8 @@ use App\Skill;
 use App\SnapshotSkill;
 use App\Language;
 use App\SnapshotLanguage;
+use App\Label;
+use App\LabelContact;
 
 class ContactsController extends Controller
 {
@@ -85,8 +87,7 @@ class ContactsController extends Controller
                         'jobTitle'      => $experience['jobTitle'],
                         'from'          => date('Y-m-d', strtotime($experience['from'])),
                         'to'            => !empty($experience['to']) ? date('Y-m-d', strtotime($experience['to'])) : null,
-                        'company_id'    => $company->id,
-                        'relevance'     => empty($experience['to'])? $this->getJobTitleRelevance($experience['jobTitle']) : null
+                        'company_id'    => $company->id
                     ];
 
                     $snapshotExperience = SnapshotExperience::create($experienceData);
@@ -229,53 +230,100 @@ class ContactsController extends Controller
         $offset = $limit * ($page - 1);
         $company = $request->company;
         $relevance = $request->relevance;
-        $start = $request->start;
-        $end = $request->end;
 
-        $whereStart = '';
-        if (!empty($start)) {
-            $whereStart = "AND sex.created_at >= '$start'";
+        $accountId = 1; // sacar de token
+
+        /*********************** TAGS FILTER **********************/
+        $tags = explode(',',$request->tags);
+        $whereContactLabels = '';
+        if (!empty($tags)){
+            $labelIds = [];
+            $labelsRows = DB::table('labels')->whereIn('name',$tags)->where('account_id',$accountId)->orderBy('id')->get();
+            if (!empty($labelsRows)){
+                foreach ($labelsRows as $labelRow) {
+                    $labelIds[] = $labelRow->id;
+                }
+            }
+            $labelIds = implode(',',$labelIds);
+
+            $contactsLabeled = DB::select("SELECT contact_id, GROUP_CONCAT(DISTINCT label_id ORDER BY label_id SEPARATOR ',') labels FROM label_contacts WHERE label_id IN ($labelIds) GROUP BY contact_id HAVING labels = '$labelIds'");
+            $contactsLabeledIds = [];
+            if (!empty($contactsLabeled)){
+                foreach ($contactsLabeled as $contactLabeled) {
+                    $contactsLabeledIds[] = $contactLabeled->contact_id;
+                }
+            }
+            $contactsLabeledIds = implode(',',$contactsLabeledIds);
+
+            $whereContactLabels = " WHERE contact_id IN ($contactsLabeledIds)";
         }
 
-        $whereEnd = '';
-        if (!empty($end)) {
-            $whereEnd = "AND sex.created_at <= '$end'";
+        /********************** TITLE FILTER **********************/
+        $title = $request->title;
+        $whereExperience = (!empty($title))? " sex.jobTitle LIKE '%$title%'" : 'sex.main_position IS TRUE';
+
+        /********************* LANGUAGE FILTER ********************/
+        $language = $request->language;
+        $subQueryLang = '';
+        if (!empty($language)){
+            $snpahotsLang = DB::select("SELECT snapshot_id FROM snapshot_languages WHERE language_id IN (SELECT id FROM languages WHERE iso2code = '{$language}') AND snapshot_id IN (SELECT MAX(id) id FROM snapshots GROUP BY contact_id)");
+            $snapIds = [];
+            if (!empty($snpahotsLang)){
+                foreach ($snpahotsLang as $snapLang) {
+                    $snapIds[] = $snapLang->snapshot_id;
+                }
+            }
+            $snapIds = implode(',',$snapIds);
+            $subQueryLang = " AND s.id IN ($snapIds)";
         }
 
-        $sql = "
-            SELECT
-                c.linkedin_id `contactLId`,
-                met.firstName,
-                met.lastName,
-                met.publicURL,
-                sex.jobTitle,
-                com.label company,
-                sex.from,
-        		loc.label location,
-                com.linkedin_id `companyLId`,
-                com.link,
-                sex.created_at `createdAt`
-            FROM snapshot_experiences sex
+        /********************* LOCATION FILTER ********************/
+        $location = $request->location;
+        $whereLocation = (!empty($location))? "AND loc.label LIKE '%$location%'" : '';
+
+        // $whereStart = '';
+        // if (!empty($start)) {
+        //     $whereStart = "AND sex.created_at >= '$start'";
+        // }
+        //
+        // $whereEnd = '';
+        // if (!empty($end)) {
+        //     $whereEnd = "AND sex.created_at <= '$end'";
+        // }
+
+        $selectData = "SELECT s.id snapshot_id, s.contact_id, met.firstName, met.lastName, met.publicURL, sex.jobTitle, com.label company, sex.from, loc.label location, com.linkedin_id `companyLId`, com.link, sex.created_at `createdAt` ";
+        $selectCount = "SELECT COUNT(*) `tot` ";
+
+        $sql = "FROM account_contacts ac
             INNER JOIN (
-                SELECT MAX(id) id, contact_id
+            	SELECT MAX(id) id, contact_id
                 FROM snapshots
+                $whereContactLabels
                 GROUP BY contact_id
-            ) s ON (s.id = sex.snapshot_id)
-            INNER JOIN contacts c ON (c.id = s.contact_id)
+            ) s ON (s.contact_id = ac.contact_id)
+            INNER JOIN snapshot_experiences sex ON (sex.snapshot_id = s.id AND $whereExperience)
             INNER JOIN companies com ON (com.id = sex.company_id)
             INNER JOIN snapshot_metadatas met ON (met.snapshot_id = s.id)
-            INNER JOIN locations loc ON (met.location_id = loc.id)
-            WHERE `to` IS NULL
-        $whereStart
-        $whereEnd";
+            INNER JOIN locations loc ON (met.location_id = loc.id $whereLocation)
+            WHERE ac.account_id = $accountId $subQueryLang";
+        // $whereStart
+        // $whereEnd";
 
-        $dataTotal = DB::select($sql);
+        $dataTotal = DB::select($selectCount.$sql);
+        $total = (!empty($dataTotal[0]->tot))? $dataTotal[0]->tot : 0;
 
         $sql .= " LIMIT $offset, $limit;";
 
-        $data = DB::select($sql);
+        $data = ($total > 0)? DB::select($selectData.$sql) : null;
 
-        $return['total'] = count($dataTotal);
+        if (!empty($data)){
+            foreach ($data as $contact) {
+                $contact->labels = ContactsService::getInstance()->getLabelsByAccount($contact->contact_id, 1);
+                $contact->languages = ContactsService::getInstance()->getLanguagesBySnapshot($contact->snapshot_id);
+            }
+        }
+
+        $return['total'] = $total;
         $return['contacts'] = $data;
         $return['page'] = $page;
         $return['limit'] = $limit;
@@ -381,11 +429,6 @@ class ContactsController extends Controller
 
         $string = preg_replace("/[\s_]/", "-", $string);
         return $string;
-    }
-
-    protected function getJobTitleRelevance( $jobTitle )
-    {
-        return ServiceInventoryService::getInstance()->getJobTitleRelevance( $jobTitle );
     }
 
 }

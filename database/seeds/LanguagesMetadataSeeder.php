@@ -15,1107 +15,1107 @@ class LanguagesMetadataSeeder extends Seeder
             [
             	'name' => 'Abkhazian',
             	'family' => 'Northwest Caucasian',
-            	'iso2code' => 'AB',
+            	'iso2code' => 'ab',
             	'icon' => ''
             ],
             [
             	'name' => 'Afar',
             	'family' => 'Afro-Asiatic',
-            	'iso2code' => 'AA',
+            	'iso2code' => 'aa',
             	'icon' => ''
             ],
             [
             	'name' => 'Afrikaans',
             	'family' => 'Indo-European',
-            	'iso2code' => 'AF',
+            	'iso2code' => 'af',
             	'icon' => ''
             ],
             [
             	'name' => 'Akan',
             	'family' => 'Niger–Congo',
-            	'iso2code' => 'AK',
+            	'iso2code' => 'ak',
             	'icon' => ''
             ],
             [
             	'name' => 'Albanian',
             	'family' => 'Indo-European',
-            	'iso2code' => 'SQ',
+            	'iso2code' => 'sq',
             	'icon' => ''
             ],
             [
             	'name' => 'Amharic',
             	'family' => 'Afro-Asiatic',
-            	'iso2code' => 'AM',
+            	'iso2code' => 'am',
             	'icon' => ''
             ],
             [
             	'name' => 'Arabic',
             	'family' => 'Afro-Asiatic',
-            	'iso2code' => 'AR',
-            	'icon' => ''
+            	'iso2code' => 'ar',
+            	'icon' => 'img/languages/ar.png'
             ],
             [
             	'name' => 'Aragonese',
             	'family' => 'Indo-European',
-            	'iso2code' => 'AN',
+            	'iso2code' => 'an',
             	'icon' => ''
             ],
             [
             	'name' => 'Armenian',
             	'family' => 'Indo-European',
-            	'iso2code' => 'HY',
+            	'iso2code' => 'hy',
             	'icon' => ''
             ],
             [
             	'name' => 'Assamese',
             	'family' => 'Indo-European',
-            	'iso2code' => 'AS',
+            	'iso2code' => 'as',
             	'icon' => ''
             ],
             [
             	'name' => 'Avaric',
             	'family' => 'Northeast Caucasian',
-            	'iso2code' => 'AV',
+            	'iso2code' => 'av',
             	'icon' => ''
             ],
             [
             	'name' => 'Avestan',
             	'family' => 'Indo-European',
-            	'iso2code' => 'AE',
+            	'iso2code' => 'ae',
             	'icon' => ''
             ],
             [
             	'name' => 'Aymara',
             	'family' => 'Aymaran',
-            	'iso2code' => 'AY',
+            	'iso2code' => 'ay',
             	'icon' => ''
             ],
             [
             	'name' => 'Azerbaijani',
             	'family' => 'Turkic',
-            	'iso2code' => 'AZ',
+            	'iso2code' => 'az',
             	'icon' => ''
             ],
             [
             	'name' => 'Bambara',
             	'family' => 'Niger–Congo',
-            	'iso2code' => 'BM',
+            	'iso2code' => 'bm',
             	'icon' => ''
             ],
             [
             	'name' => 'Bashkir',
             	'family' => 'Turkic',
-            	'iso2code' => 'BA',
+            	'iso2code' => 'ba',
             	'icon' => ''
             ],
             [
             	'name' => 'Basque',
             	'family' => 'Language isolate',
-            	'iso2code' => 'EU',
+            	'iso2code' => 'eu',
             	'icon' => ''
             ],
             [
             	'name' => 'Belarusian',
             	'family' => 'Indo-European',
-            	'iso2code' => 'BE',
+            	'iso2code' => 'be',
             	'icon' => ''
             ],
             [
             	'name' => 'Bengali',
             	'family' => 'Indo-European',
-            	'iso2code' => 'BN',
+            	'iso2code' => 'bn',
             	'icon' => ''
             ],
             [
             	'name' => 'Bihari languages',
             	'family' => 'Indo-European',
-            	'iso2code' => 'BH',
+            	'iso2code' => 'bh',
             	'icon' => ''
             ],
             [
             	'name' => 'Bislama',
             	'family' => 'Creole',
-            	'iso2code' => 'BI',
+            	'iso2code' => 'bi',
             	'icon' => ''
             ],
             [
             	'name' => 'Bosnian',
             	'family' => 'Indo-European',
-            	'iso2code' => 'BS',
+            	'iso2code' => 'bs',
             	'icon' => ''
             ],
             [
             	'name' => 'Breton',
             	'family' => 'Indo-European',
-            	'iso2code' => 'BR',
+            	'iso2code' => 'br',
             	'icon' => ''
             ],
             [
             	'name' => 'Bulgarian',
             	'family' => 'Indo-European',
-            	'iso2code' => 'BG',
+            	'iso2code' => 'bg',
             	'icon' => ''
             ],
             [
             	'name' => 'Burmese',
             	'family' => 'Sino-Tibetan',
-            	'iso2code' => 'MY',
+            	'iso2code' => 'my',
             	'icon' => ''
             ],
             [
             	'name' => 'Catalan, Valencian',
             	'family' => 'Indo-European',
-            	'iso2code' => 'CA',
+            	'iso2code' => 'ca',
             	'icon' => ''
             ],
             [
             	'name' => 'Chamorro',
             	'family' => 'Austronesian',
-            	'iso2code' => 'CH',
+            	'iso2code' => 'ch',
             	'icon' => ''
             ],
             [
             	'name' => 'Chechen',
             	'family' => 'Northeast Caucasian',
-            	'iso2code' => 'CE',
+            	'iso2code' => 'ce',
             	'icon' => ''
             ],
             [
             	'name' => 'Chichewa, Chewa, Nyanja',
             	'family' => 'Niger–Congo',
-            	'iso2code' => 'NY',
+            	'iso2code' => 'ny',
             	'icon' => ''
             ],
             [
             	'name' => 'Chinese',
             	'family' => 'Sino-Tibetan',
-            	'iso2code' => 'ZH',
-            	'icon' => ''
+            	'iso2code' => 'zh',
+            	'icon' => 'img/languages/zh.png'
             ],
             [
             	'name' => 'Chuvash',
             	'family' => 'Turkic',
-            	'iso2code' => 'CV',
+            	'iso2code' => 'cv',
             	'icon' => ''
             ],
             [
             	'name' => 'Cornish',
             	'family' => 'Indo-European',
-            	'iso2code' => 'KW',
+            	'iso2code' => 'kw',
             	'icon' => ''
             ],
             [
             	'name' => 'Corsican',
             	'family' => 'Indo-European',
-            	'iso2code' => 'CO',
+            	'iso2code' => 'co',
             	'icon' => ''
             ],
             [
             	'name' => 'Cree',
             	'family' => 'Algonquian',
-            	'iso2code' => 'CR',
+            	'iso2code' => 'cr',
             	'icon' => ''
             ],
             [
             	'name' => 'Croatian',
             	'family' => 'Indo-European',
-            	'iso2code' => 'HR',
+            	'iso2code' => 'hr',
             	'icon' => ''
             ],
             [
             	'name' => 'Czech',
             	'family' => 'Indo-European',
-            	'iso2code' => 'CS',
+            	'iso2code' => 'cs',
             	'icon' => ''
             ],
             [
             	'name' => 'Danish',
             	'family' => 'Indo-European',
-            	'iso2code' => 'DA',
+            	'iso2code' => 'da',
             	'icon' => ''
             ],
             [
             	'name' => 'Divehi, Dhivehi, Maldivian',
             	'family' => 'Indo-European',
-            	'iso2code' => 'DV',
+            	'iso2code' => 'dv',
             	'icon' => ''
             ],
             [
             	'name' => 'Dutch, Flemish',
             	'family' => 'Indo-European',
-            	'iso2code' => 'NL',
+            	'iso2code' => 'nl',
             	'icon' => ''
             ],
             [
             	'name' => 'Dzongkha',
             	'family' => 'Sino-Tibetan',
-            	'iso2code' => 'DZ',
+            	'iso2code' => 'dz',
             	'icon' => ''
             ],
             [
             	'name' => 'English',
             	'family' => 'Indo-European',
-            	'iso2code' => 'EN',
-            	'icon' => ''
+            	'iso2code' => 'en',
+            	'icon' => 'img/languages/en.png'
             ],
             [
             	'name' => 'Esperanto',
             	'family' => 'Constructed',
-            	'iso2code' => 'EO',
+            	'iso2code' => 'eo',
             	'icon' => ''
             ],
             [
             	'name' => 'Estonian',
             	'family' => 'Uralic',
-            	'iso2code' => 'ET',
+            	'iso2code' => 'et',
             	'icon' => ''
             ],
             [
             	'name' => 'Ewe',
             	'family' => 'Niger–Congo',
-            	'iso2code' => 'EE',
+            	'iso2code' => 'ee',
             	'icon' => ''
             ],
             [
             	'name' => 'Faroese',
             	'family' => 'Indo-European',
-            	'iso2code' => 'FO',
+            	'iso2code' => 'fo',
             	'icon' => ''
             ],
             [
             	'name' => 'Fijian',
             	'family' => 'Austronesian',
-            	'iso2code' => 'FJ',
+            	'iso2code' => 'fj',
             	'icon' => ''
             ],
             [
             	'name' => 'Finnish',
             	'family' => 'Uralic',
-            	'iso2code' => 'FI',
+            	'iso2code' => 'fi',
             	'icon' => ''
             ],
             [
             	'name' => 'French',
             	'family' => 'Indo-European',
-            	'iso2code' => 'FR',
-            	'icon' => ''
+            	'iso2code' => 'fr',
+            	'icon' => 'img/languages/fr.png'
             ],
             [
             	'name' => 'Fulah',
             	'family' => 'Niger–Congo',
-            	'iso2code' => 'FF',
+            	'iso2code' => 'ff',
             	'icon' => ''
             ],
             [
             	'name' => 'Galician',
             	'family' => 'Indo-European',
-            	'iso2code' => 'GL',
+            	'iso2code' => 'gl',
             	'icon' => ''
             ],
             [
             	'name' => 'Georgian',
             	'family' => 'Kartvelian',
-            	'iso2code' => 'KA',
+            	'iso2code' => 'ka',
             	'icon' => ''
             ],
             [
             	'name' => 'German',
             	'family' => 'Indo-European',
-            	'iso2code' => 'DE',
-            	'icon' => ''
+            	'iso2code' => 'de',
+            	'icon' => 'img/languages/de.png'
             ],
             [
             	'name' => 'Greek, Modern (1453-)',
             	'family' => 'Indo-European',
-            	'iso2code' => 'EL',
+            	'iso2code' => 'el',
             	'icon' => ''
             ],
             [
             	'name' => 'Guarani',
             	'family' => 'Tupian',
-            	'iso2code' => 'GN',
+            	'iso2code' => 'gn',
             	'icon' => ''
             ],
             [
             	'name' => 'Gujarati',
             	'family' => 'Indo-European',
-            	'iso2code' => 'GU',
+            	'iso2code' => 'gu',
             	'icon' => ''
             ],
             [
             	'name' => 'Haitian, Haitian Creole',
             	'family' => 'Creole',
-            	'iso2code' => 'HT',
+            	'iso2code' => 'ht',
             	'icon' => ''
             ],
             [
             	'name' => 'Hausa',
             	'family' => 'Afro-Asiatic',
-            	'iso2code' => 'HA',
+            	'iso2code' => 'ha',
             	'icon' => ''
             ],
             [
             	'name' => 'Hebrew',
             	'family' => 'Afro-Asiatic',
-            	'iso2code' => 'HE',
+            	'iso2code' => 'he',
             	'icon' => ''
             ],
             [
             	'name' => 'Herero',
             	'family' => 'Niger–Congo',
-            	'iso2code' => 'HZ',
+            	'iso2code' => 'hz',
             	'icon' => ''
             ],
             [
             	'name' => 'Hindi',
             	'family' => 'Indo-European',
-            	'iso2code' => 'HI',
+            	'iso2code' => 'hi',
             	'icon' => ''
             ],
             [
             	'name' => 'Hiri Motu',
             	'family' => 'Austronesian',
-            	'iso2code' => 'HO',
+            	'iso2code' => 'ho',
             	'icon' => ''
             ],
             [
             	'name' => 'Hungarian',
             	'family' => 'Uralic',
-            	'iso2code' => 'HU',
+            	'iso2code' => 'hu',
             	'icon' => ''
             ],
             [
-            	'name' => 'Interlingua (International Auxiliary Language Association)',
+            	'name' => 'Interlingua',
             	'family' => 'Constructed',
-            	'iso2code' => 'IA',
+            	'iso2code' => 'ia',
             	'icon' => ''
             ],
             [
             	'name' => 'Indonesian',
             	'family' => 'Austronesian',
-            	'iso2code' => 'ID',
+            	'iso2code' => 'id',
             	'icon' => ''
             ],
             [
             	'name' => 'Interlingue, Occidental',
             	'family' => 'Constructed',
-            	'iso2code' => 'IE',
+            	'iso2code' => 'ie',
             	'icon' => ''
             ],
             [
             	'name' => 'Irish',
             	'family' => 'Indo-European',
-            	'iso2code' => 'GA',
+            	'iso2code' => 'ga',
             	'icon' => ''
             ],
             [
             	'name' => 'Igbo',
             	'family' => 'Niger–Congo',
-            	'iso2code' => 'IG',
+            	'iso2code' => 'ig',
             	'icon' => ''
             ],
             [
             	'name' => 'Inupiaq',
             	'family' => 'Eskimo–Aleut',
-            	'iso2code' => 'IK',
+            	'iso2code' => 'ik',
             	'icon' => ''
             ],
             [
             	'name' => 'Ido',
             	'family' => 'Constructed',
-            	'iso2code' => 'IO',
+            	'iso2code' => 'io',
             	'icon' => ''
             ],
             [
             	'name' => 'Icelandic',
             	'family' => 'Indo-European',
-            	'iso2code' => 'IS',
+            	'iso2code' => 'is',
             	'icon' => ''
             ],
             [
             	'name' => 'Italian',
             	'family' => 'Indo-European',
-            	'iso2code' => 'IT',
-            	'icon' => ''
+            	'iso2code' => 'it',
+            	'icon' => 'img/languages/it.png'
             ],
             [
             	'name' => 'Inuktitut',
             	'family' => 'Eskimo–Aleut',
-            	'iso2code' => 'IU',
+            	'iso2code' => 'iu',
             	'icon' => ''
             ],
             [
             	'name' => 'Japanese',
             	'family' => 'Japonic',
-            	'iso2code' => 'JA',
+            	'iso2code' => 'ja',
             	'icon' => ''
             ],
             [
             	'name' => 'Javanese',
             	'family' => 'Austronesian',
-            	'iso2code' => 'JV',
+            	'iso2code' => 'jv',
             	'icon' => ''
             ],
             [
             	'name' => 'Kalaallisut, Greenlandic',
             	'family' => 'Eskimo–Aleut',
-            	'iso2code' => 'KL',
+            	'iso2code' => 'kl',
             	'icon' => ''
             ],
             [
             	'name' => 'Kannada',
             	'family' => 'Dravidian',
-            	'iso2code' => 'KN',
+            	'iso2code' => 'kn',
             	'icon' => ''
             ],
             [
             	'name' => 'Kanuri',
             	'family' => 'Nilo-Saharan',
-            	'iso2code' => 'KR',
+            	'iso2code' => 'kr',
             	'icon' => ''
             ],
             [
             	'name' => 'Kashmiri',
             	'family' => 'Indo-European',
-            	'iso2code' => 'KS',
+            	'iso2code' => 'ks',
             	'icon' => ''
             ],
             [
             	'name' => 'Kazakh',
             	'family' => 'Turkic',
-            	'iso2code' => 'KK',
+            	'iso2code' => 'kk',
             	'icon' => ''
             ],
             [
             	'name' => 'Central Khmer',
             	'family' => 'Austroasiatic',
-            	'iso2code' => 'KM',
+            	'iso2code' => 'km',
             	'icon' => ''
             ],
             [
             	'name' => 'Kikuyu, Gikuyu',
             	'family' => 'Niger–Congo',
-            	'iso2code' => 'KI',
+            	'iso2code' => 'ki',
             	'icon' => ''
             ],
             [
             	'name' => 'Kinyarwanda',
             	'family' => 'Niger–Congo',
-            	'iso2code' => 'RW',
+            	'iso2code' => 'rw',
             	'icon' => ''
             ],
             [
             	'name' => 'Kirghiz, Kyrgyz',
             	'family' => 'Turkic',
-            	'iso2code' => 'KY',
+            	'iso2code' => 'ky',
             	'icon' => ''
             ],
             [
             	'name' => 'Komi',
             	'family' => 'Uralic',
-            	'iso2code' => 'KV',
+            	'iso2code' => 'kv',
             	'icon' => ''
             ],
             [
             	'name' => 'Kongo',
             	'family' => 'Niger–Congo',
-            	'iso2code' => 'KG',
+            	'iso2code' => 'kg',
             	'icon' => ''
             ],
             [
             	'name' => 'Korean',
             	'family' => 'Koreanic',
-            	'iso2code' => 'KO',
+            	'iso2code' => 'ko',
             	'icon' => ''
             ],
             [
             	'name' => 'Kurdish',
             	'family' => 'Indo-European',
-            	'iso2code' => 'KU',
+            	'iso2code' => 'ku',
             	'icon' => ''
             ],
             [
             	'name' => 'Kuanyama, Kwanyama',
             	'family' => 'Niger–Congo',
-            	'iso2code' => 'KJ',
+            	'iso2code' => 'kj',
             	'icon' => ''
             ],
             [
             	'name' => 'Latin',
             	'family' => 'Indo-European',
-            	'iso2code' => 'LA',
+            	'iso2code' => 'la',
             	'icon' => ''
             ],
             [
             	'name' => 'Luxembourgish, Letzeburgesch',
             	'family' => 'Indo-European',
-            	'iso2code' => 'LB',
+            	'iso2code' => 'lb',
             	'icon' => ''
             ],
             [
             	'name' => 'Ganda',
             	'family' => 'Niger–Congo',
-            	'iso2code' => 'LG',
+            	'iso2code' => 'lg',
             	'icon' => ''
             ],
             [
             	'name' => 'Limburgan, Limburger, Limburgish',
             	'family' => 'Indo-European',
-            	'iso2code' => 'LI',
+            	'iso2code' => 'li',
             	'icon' => ''
             ],
             [
             	'name' => 'Lingala',
             	'family' => 'Niger–Congo',
-            	'iso2code' => 'LN',
+            	'iso2code' => 'ln',
             	'icon' => ''
             ],
             [
             	'name' => 'Lao',
             	'family' => 'Tai–Kadai',
-            	'iso2code' => 'LO',
+            	'iso2code' => 'lo',
             	'icon' => ''
             ],
             [
             	'name' => 'Lithuanian',
             	'family' => 'Indo-European',
-            	'iso2code' => 'LT',
+            	'iso2code' => 'lt',
             	'icon' => ''
             ],
             [
             	'name' => 'Luba-Katanga',
             	'family' => 'Niger–Congo',
-            	'iso2code' => 'LU',
+            	'iso2code' => 'lu',
             	'icon' => ''
             ],
             [
             	'name' => 'Latvian',
             	'family' => 'Indo-European',
-            	'iso2code' => 'LV',
+            	'iso2code' => 'lv',
             	'icon' => ''
             ],
             [
             	'name' => 'Manx',
             	'family' => 'Indo-European',
-            	'iso2code' => 'GV',
+            	'iso2code' => 'gv',
             	'icon' => ''
             ],
             [
             	'name' => 'Macedonian',
             	'family' => 'Indo-European',
-            	'iso2code' => 'MK',
+            	'iso2code' => 'mk',
             	'icon' => ''
             ],
             [
             	'name' => 'Malagasy',
             	'family' => 'Austronesian',
-            	'iso2code' => 'MG',
+            	'iso2code' => 'mg',
             	'icon' => ''
             ],
             [
             	'name' => 'Malay',
             	'family' => 'Austronesian',
-            	'iso2code' => 'MS',
+            	'iso2code' => 'ms',
             	'icon' => ''
             ],
             [
             	'name' => 'Malayalam',
             	'family' => 'Dravidian',
-            	'iso2code' => 'ML',
+            	'iso2code' => 'ml',
             	'icon' => ''
             ],
             [
             	'name' => 'Maltese',
             	'family' => 'Afro-Asiatic',
-            	'iso2code' => 'MT',
+            	'iso2code' => 'mt',
             	'icon' => ''
             ],
             [
             	'name' => 'Maori',
             	'family' => 'Austronesian',
-            	'iso2code' => 'MI',
+            	'iso2code' => 'mi',
             	'icon' => ''
             ],
             [
             	'name' => 'Marathi',
             	'family' => 'Indo-European',
-            	'iso2code' => 'MR',
+            	'iso2code' => 'mr',
             	'icon' => ''
             ],
             [
             	'name' => 'Marshallese',
             	'family' => 'Austronesian',
-            	'iso2code' => 'MH',
+            	'iso2code' => 'mh',
             	'icon' => ''
             ],
             [
             	'name' => 'Mongolian',
             	'family' => 'Mongolic',
-            	'iso2code' => 'MN',
+            	'iso2code' => 'mn',
             	'icon' => ''
             ],
             [
             	'name' => 'Nauru',
             	'family' => 'Austronesian',
-            	'iso2code' => 'NA',
+            	'iso2code' => 'na',
             	'icon' => ''
             ],
             [
             	'name' => 'Navajo, Navaho',
             	'family' => 'Dené–Yeniseian',
-            	'iso2code' => 'NV',
+            	'iso2code' => 'nv',
             	'icon' => ''
             ],
             [
             	'name' => 'North Ndebele',
             	'family' => 'Niger–Congo',
-            	'iso2code' => 'ND',
+            	'iso2code' => 'nd',
             	'icon' => ''
             ],
             [
             	'name' => 'Nepali',
             	'family' => 'Indo-European',
-            	'iso2code' => 'NE',
+            	'iso2code' => 'ne',
             	'icon' => ''
             ],
             [
             	'name' => 'Ndonga',
             	'family' => 'Niger–Congo',
-            	'iso2code' => 'NG',
+            	'iso2code' => 'ng',
             	'icon' => ''
             ],
             [
             	'name' => 'Norwegian Bokmål',
             	'family' => 'Indo-European',
-            	'iso2code' => 'NB',
+            	'iso2code' => 'nb',
             	'icon' => ''
             ],
             [
             	'name' => 'Norwegian Nynorsk',
             	'family' => 'Indo-European',
-            	'iso2code' => 'NN',
+            	'iso2code' => 'nn',
             	'icon' => ''
             ],
             [
             	'name' => 'Norwegian',
             	'family' => 'Indo-European',
-            	'iso2code' => 'NO',
+            	'iso2code' => 'no',
             	'icon' => ''
             ],
             [
             	'name' => 'Sichuan Yi, Nuosu',
             	'family' => 'Sino-Tibetan',
-            	'iso2code' => 'II',
+            	'iso2code' => 'ii',
             	'icon' => ''
             ],
             [
             	'name' => 'South Ndebele',
             	'family' => 'Niger–Congo',
-            	'iso2code' => 'NR',
+            	'iso2code' => 'nr',
             	'icon' => ''
             ],
             [
             	'name' => 'Occitan',
             	'family' => 'Indo-European',
-            	'iso2code' => 'OC',
+            	'iso2code' => 'oc',
             	'icon' => ''
             ],
             [
             	'name' => 'Ojibwa',
             	'family' => 'Algonquian',
-            	'iso2code' => 'OJ',
+            	'iso2code' => 'oj',
             	'icon' => ''
             ],
             [
-            	'name' => 'Church Slavic, Old Slavonic, Church Slavonic, Old Bulgarian',
+            	'name' => 'Church Slavic, Old Slavonic, Old Bulgarian',
             	'family' => 'Indo-European',
-            	'iso2code' => 'CU',
+            	'iso2code' => 'cu',
             	'icon' => ''
             ],
             [
             	'name' => 'Oromo',
             	'family' => 'Afro-Asiatic',
-            	'iso2code' => 'OM',
+            	'iso2code' => 'om',
             	'icon' => ''
             ],
             [
             	'name' => 'Oriya',
             	'family' => 'Indo-European',
-            	'iso2code' => 'OR',
+            	'iso2code' => 'or',
             	'icon' => ''
             ],
             [
             	'name' => 'Ossetian, Ossetic',
             	'family' => 'Indo-European',
-            	'iso2code' => 'OS',
+            	'iso2code' => 'os',
             	'icon' => ''
             ],
             [
             	'name' => 'Punjabi, Panjabi',
             	'family' => 'Indo-European',
-            	'iso2code' => 'PA',
+            	'iso2code' => 'pa',
             	'icon' => ''
             ],
             [
             	'name' => 'Pali',
             	'family' => 'Indo-European',
-            	'iso2code' => 'PI',
+            	'iso2code' => 'pi',
             	'icon' => ''
             ],
             [
             	'name' => 'Persian',
             	'family' => 'Indo-European',
-            	'iso2code' => 'FA',
+            	'iso2code' => 'fa',
             	'icon' => ''
             ],
             [
             	'name' => 'Polish',
             	'family' => 'Indo-European',
-            	'iso2code' => 'PL',
+            	'iso2code' => 'pl',
             	'icon' => ''
             ],
             [
             	'name' => 'Pashto, Pushto',
             	'family' => 'Indo-European',
-            	'iso2code' => 'PS',
+            	'iso2code' => 'ps',
             	'icon' => ''
             ],
             [
             	'name' => 'Portuguese',
             	'family' => 'Indo-European',
-            	'iso2code' => 'PT',
-            	'icon' => ''
+            	'iso2code' => 'pt',
+            	'icon' => 'img/languages/pt.png'
             ],
             [
             	'name' => 'Quechua',
             	'family' => 'Quechuan',
-            	'iso2code' => 'QU',
+            	'iso2code' => 'qu',
             	'icon' => ''
             ],
             [
             	'name' => 'Romansh',
             	'family' => 'Indo-European',
-            	'iso2code' => 'RM',
+            	'iso2code' => 'rm',
             	'icon' => ''
             ],
             [
             	'name' => 'Rundi',
             	'family' => 'Niger–Congo',
-            	'iso2code' => 'RN',
+            	'iso2code' => 'rn',
             	'icon' => ''
             ],
             [
             	'name' => 'Romanian, Moldavian, Moldovan',
             	'family' => 'Indo-European',
-            	'iso2code' => 'RO',
+            	'iso2code' => 'ro',
             	'icon' => ''
             ],
             [
             	'name' => 'Russian',
             	'family' => 'Indo-European',
-            	'iso2code' => 'RU',
-            	'icon' => ''
+            	'iso2code' => 'ru',
+            	'icon' => 'img/languages/ru.png'
             ],
             [
             	'name' => 'Sanskrit',
             	'family' => 'Indo-European',
-            	'iso2code' => 'SA',
+            	'iso2code' => 'sa',
             	'icon' => ''
             ],
             [
             	'name' => 'Sardinian',
             	'family' => 'Indo-European',
-            	'iso2code' => 'SC',
+            	'iso2code' => 'sc',
             	'icon' => ''
             ],
             [
             	'name' => 'Sindhi',
             	'family' => 'Indo-European',
-            	'iso2code' => 'SD',
+            	'iso2code' => 'sd',
             	'icon' => ''
             ],
             [
             	'name' => 'Northern Sami',
             	'family' => 'Uralic',
-            	'iso2code' => 'SE',
+            	'iso2code' => 'se',
             	'icon' => ''
             ],
             [
             	'name' => 'Samoan',
             	'family' => 'Austronesian',
-            	'iso2code' => 'SM',
+            	'iso2code' => 'sm',
             	'icon' => ''
             ],
             [
             	'name' => 'Sango',
             	'family' => 'Creole',
-            	'iso2code' => 'SG',
+            	'iso2code' => 'sg',
             	'icon' => ''
             ],
             [
             	'name' => 'Serbian',
             	'family' => 'Indo-European',
-            	'iso2code' => 'SR',
+            	'iso2code' => 'sr',
             	'icon' => ''
             ],
             [
             	'name' => 'Gaelic, Scottish Gaelic',
             	'family' => 'Indo-European',
-            	'iso2code' => 'GD',
+            	'iso2code' => 'gd',
             	'icon' => ''
             ],
             [
             	'name' => 'Shona',
             	'family' => 'Niger–Congo',
-            	'iso2code' => 'SN',
+            	'iso2code' => 'sn',
             	'icon' => ''
             ],
             [
             	'name' => 'Sinhala, Sinhalese',
             	'family' => 'Indo-European',
-            	'iso2code' => 'SI',
+            	'iso2code' => 'si',
             	'icon' => ''
             ],
             [
             	'name' => 'Slovak',
             	'family' => 'Indo-European',
-            	'iso2code' => 'SK',
+            	'iso2code' => 'sk',
             	'icon' => ''
             ],
             [
             	'name' => 'Slovenian',
             	'family' => 'Indo-European',
-            	'iso2code' => 'SL',
+            	'iso2code' => 'sl',
             	'icon' => ''
             ],
             [
             	'name' => 'Somali',
             	'family' => 'Afro-Asiatic',
-            	'iso2code' => 'SO',
+            	'iso2code' => 'so',
             	'icon' => ''
             ],
             [
             	'name' => 'Southern Sotho',
             	'family' => 'Niger–Congo',
-            	'iso2code' => 'ST',
+            	'iso2code' => 'st',
             	'icon' => ''
             ],
             [
             	'name' => 'Spanish, Castilian',
             	'family' => 'Indo-European',
-            	'iso2code' => 'ES',
-            	'icon' => ''
+            	'iso2code' => 'es',
+            	'icon' => 'img/languages/es.png'
             ],
             [
             	'name' => 'Sundanese',
             	'family' => 'Austronesian',
-            	'iso2code' => 'SU',
+            	'iso2code' => 'su',
             	'icon' => ''
             ],
             [
             	'name' => 'Swahili',
             	'family' => 'Niger–Congo',
-            	'iso2code' => 'SW',
+            	'iso2code' => 'sw',
             	'icon' => ''
             ],
             [
             	'name' => 'Swati',
             	'family' => 'Niger–Congo',
-            	'iso2code' => 'SS',
+            	'iso2code' => 'ss',
             	'icon' => ''
             ],
             [
             	'name' => 'Swedish',
             	'family' => 'Indo-European',
-            	'iso2code' => 'SV',
+            	'iso2code' => 'sv',
             	'icon' => ''
             ],
             [
             	'name' => 'Tamil',
             	'family' => 'Dravidian',
-            	'iso2code' => 'TA',
+            	'iso2code' => 'ta',
             	'icon' => ''
             ],
             [
             	'name' => 'Telugu',
             	'family' => 'Dravidian',
-            	'iso2code' => 'TE',
+            	'iso2code' => 'te',
             	'icon' => ''
             ],
             [
             	'name' => 'Tajik',
             	'family' => 'Indo-European',
-            	'iso2code' => 'TG',
+            	'iso2code' => 'tg',
             	'icon' => ''
             ],
             [
             	'name' => 'Thai',
             	'family' => 'Tai–Kadai',
-            	'iso2code' => 'TH',
+            	'iso2code' => 'th',
             	'icon' => ''
             ],
             [
             	'name' => 'Tigrinya',
             	'family' => 'Afro-Asiatic',
-            	'iso2code' => 'TI',
+            	'iso2code' => 'ti',
             	'icon' => ''
             ],
             [
             	'name' => 'Tibetan',
             	'family' => 'Sino-Tibetan',
-            	'iso2code' => 'BO',
+            	'iso2code' => 'bo',
             	'icon' => ''
             ],
             [
             	'name' => 'Turkmen',
             	'family' => 'Turkic',
-            	'iso2code' => 'TK',
+            	'iso2code' => 'tk',
             	'icon' => ''
             ],
             [
             	'name' => 'Tagalog',
             	'family' => 'Austronesian',
-            	'iso2code' => 'TL',
+            	'iso2code' => 'tl',
             	'icon' => ''
             ],
             [
             	'name' => 'Tswana',
             	'family' => 'Niger–Congo',
-            	'iso2code' => 'TN',
+            	'iso2code' => 'tn',
             	'icon' => ''
             ],
             [
             	'name' => 'Tonga (Tonga Islands)',
             	'family' => 'Austronesian',
-            	'iso2code' => 'TO',
+            	'iso2code' => 'to',
             	'icon' => ''
             ],
             [
             	'name' => 'Turkish',
             	'family' => 'Turkic',
-            	'iso2code' => 'TR',
+            	'iso2code' => 'tr',
             	'icon' => ''
             ],
             [
             	'name' => 'Tsonga',
             	'family' => 'Niger–Congo',
-            	'iso2code' => 'TS',
+            	'iso2code' => 'ts',
             	'icon' => ''
             ],
             [
             	'name' => 'Tatar',
             	'family' => 'Turkic',
-            	'iso2code' => 'TT',
+            	'iso2code' => 'tt',
             	'icon' => ''
             ],
             [
             	'name' => 'Twi',
             	'family' => 'Niger–Congo',
-            	'iso2code' => 'TW',
+            	'iso2code' => 'tw',
             	'icon' => ''
             ],
             [
             	'name' => 'Tahitian',
             	'family' => 'Austronesian',
-            	'iso2code' => 'TY',
+            	'iso2code' => 'ty',
             	'icon' => ''
             ],
             [
             	'name' => 'Uighur, Uyghur',
             	'family' => 'Turkic',
-            	'iso2code' => 'UG',
+            	'iso2code' => 'ug',
             	'icon' => ''
             ],
             [
             	'name' => 'Ukrainian',
             	'family' => 'Indo-European',
-            	'iso2code' => 'UK',
+            	'iso2code' => 'uk',
             	'icon' => ''
             ],
             [
             	'name' => 'Urdu',
             	'family' => 'Indo-European',
-            	'iso2code' => 'UR',
+            	'iso2code' => 'ur',
             	'icon' => ''
             ],
             [
             	'name' => 'Uzbek',
             	'family' => 'Turkic',
-            	'iso2code' => 'UZ',
+            	'iso2code' => 'uz',
             	'icon' => ''
             ],
             [
             	'name' => 'Venda',
             	'family' => 'Niger–Congo',
-            	'iso2code' => 'VE',
+            	'iso2code' => 've',
             	'icon' => ''
             ],
             [
             	'name' => 'Vietnamese',
             	'family' => 'Austroasiatic',
-            	'iso2code' => 'VI',
+            	'iso2code' => 'vi',
             	'icon' => ''
             ],
             [
             	'name' => 'Volapük',
             	'family' => 'Constructed',
-            	'iso2code' => 'VO',
+            	'iso2code' => 'vo',
             	'icon' => ''
             ],
             [
             	'name' => 'Walloon',
             	'family' => 'Indo-European',
-            	'iso2code' => 'WA',
+            	'iso2code' => 'wa',
             	'icon' => ''
             ],
             [
             	'name' => 'Welsh',
             	'family' => 'Indo-European',
-            	'iso2code' => 'CY',
+            	'iso2code' => 'cy',
             	'icon' => ''
             ],
             [
             	'name' => 'Wolof',
             	'family' => 'Niger–Congo',
-            	'iso2code' => 'WO',
+            	'iso2code' => 'wo',
             	'icon' => ''
             ],
             [
             	'name' => 'Western Frisian',
             	'family' => 'Indo-European',
-            	'iso2code' => 'FY',
+            	'iso2code' => 'fy',
             	'icon' => ''
             ],
             [
             	'name' => 'Xhosa',
             	'family' => 'Niger–Congo',
-            	'iso2code' => 'XH',
+            	'iso2code' => 'xh',
             	'icon' => ''
             ],
             [
             	'name' => 'Yiddish',
             	'family' => 'Indo-European',
-            	'iso2code' => 'YI',
+            	'iso2code' => 'yi',
             	'icon' => ''
             ],
             [
             	'name' => 'Yoruba',
             	'family' => 'Niger–Congo',
-            	'iso2code' => 'YO',
+            	'iso2code' => 'yo',
             	'icon' => ''
             ],
             [
             	'name' => 'Zhuang, Chuang',
             	'family' => 'Tai–Kadai',
-            	'iso2code' => 'ZA',
+            	'iso2code' => 'za',
             	'icon' => ''
             ],
             [
             	'name' => 'Zulu',
             	'family' => 'Niger–Congo',
-            	'iso2code' => 'ZU',
+            	'iso2code' => 'zu',
             	'icon' => ''
-            ],
+            ]
         ]);
     }
 }
