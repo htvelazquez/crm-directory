@@ -18,11 +18,18 @@ use App\Skill;
 use App\SnapshotSkill;
 use App\Language;
 use App\SnapshotLanguage;
+use App\Label;
+use App\LabelContact;
+use App\AccountContact;
 use App\Jobs\ProcessSnapshot;
+
 
 class SnapshotsController extends Controller
 {
     public function store(StoreSnapshot $request) {
+        $accountId = 1; // get from token
+        $userId = 1; // get from token
+
         $contactData = [
             'linkedin_id'   => $request->id
         ];
@@ -31,6 +38,42 @@ class SnapshotsController extends Controller
 
         if (empty($contact)) {
             $contact = Contact::create($contactData);
+        } else {
+            $contact->save();
+        }
+
+        $contactAccount = AccountContact::where(['contact_id' => $contact->id, 'account_id' => $accountId])->first();
+        if (empty($contactAccount)) {
+            $contactAccount = AccountContact::create([
+                'account_id'    => $accountId,
+                'contact_id'    => $contact->id,
+                'comments'      => (!empty($request->comments))? $request->comments : '',
+                'updated_by'    => $userId,
+                'created_by'    => $userId
+            ]);
+        }else{
+            $contactAccount->updated_by = $userId;
+            if (!empty($request->comments)){
+                $contactAccount->comments = $request->comments.'\n'.$contactAccount->comments;
+            }
+            $contactAccount->save();
+        }
+
+        if (!empty($request->labels)){
+            foreach ($request->labels as $label) {
+                $labelData = [
+                    'name'  => $label,
+                    'account_id' => $accountId
+                ];
+
+                $dbLabel = Label::firstOrCreate($labelData);
+                $contactLabelData = [
+                    'contact_id' => $contact->id,
+                    'label_id'  => $dbLabel->id
+                ];
+
+                LabelContact::firstOrCreate($contactLabelData);
+            }
         }
 
         $snapshotData = [
