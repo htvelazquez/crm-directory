@@ -234,9 +234,10 @@ class ContactsController extends Controller
         $accountId = 1; // sacar de token
 
         /*********************** TAGS FILTER **********************/
-        $tags = explode(',',$request->tags);
         $whereContactLabels = '';
-        if (!empty($tags)){
+        if (!empty($request->tags)){
+            $tags = explode(',',$request->tags);
+
             $labelIds = [];
             $labelsRows = DB::table('labels')->whereIn('name',$tags)->where('account_id',$accountId)->orderBy('id')->get();
             if (!empty($labelsRows)){
@@ -244,7 +245,7 @@ class ContactsController extends Controller
                     $labelIds[] = $labelRow->id;
                 }
             }
-            $labelIds = implode(',',$labelIds);
+            $labelIds = (!empty($labelIds))? implode(',',$labelIds) : '0';
 
             $contactsLabeled = DB::select("SELECT contact_id, GROUP_CONCAT(DISTINCT label_id ORDER BY label_id SEPARATOR ',') labels FROM label_contacts WHERE label_id IN ($labelIds) GROUP BY contact_id HAVING labels = '$labelIds'");
             $contactsLabeledIds = [];
@@ -253,7 +254,7 @@ class ContactsController extends Controller
                     $contactsLabeledIds[] = $contactLabeled->contact_id;
                 }
             }
-            $contactsLabeledIds = implode(',',$contactsLabeledIds);
+            $contactsLabeledIds = (!empty($contactsLabeledIds))? implode(',',$contactsLabeledIds) : '0';
 
             $whereContactLabels = " WHERE contact_id IN ($contactsLabeledIds)";
         }
@@ -273,7 +274,7 @@ class ContactsController extends Controller
                     $snapIds[] = $snapLang->snapshot_id;
                 }
             }
-            $snapIds = implode(',',$snapIds);
+            $snapIds = (!empty($snapIds))? implode(',',$snapIds) : '0';
             $subQueryLang = " AND s.id IN ($snapIds)";
         }
 
