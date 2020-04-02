@@ -238,16 +238,17 @@ class ContactsController extends Controller
             $handle = fopen('php://output', 'w');
 
             fputcsv($handle, [
-                'nombre','apellido','link','titulo','compañia','fecha_desde','ubicación','etiquetas','idiomas'
+                'nombre','apellido','link_contacto','titulo','compañia','link_compañia','fecha_desde','ubicación','etiquetas','idiomas'
             ]);
 
             foreach ($data as $line) {
                 $dataCsv = [
                     $line->firstName,
                     $line->lastName,
-                    $line->publicURL,
+                    (!empty($line->publicURL))? "https://www.linkedin.com/in/{$line->publicURL}" : '-',
                     $line->jobTitle,
                     $line->company,
+                    (!empty($line->link))? "https://www.linkedin.com/company/{$line->link}" : '-',                    
                     $line->from,
                     $line->location,
                     $line->labels,
