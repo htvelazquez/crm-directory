@@ -4,7 +4,7 @@ Route::post('contacts', 'SnapshotsController@store')->middleware('x.api.key');
 Route::get('contacts', 'ContactsController@get')->middleware('x.api.key');
 Route::get('contacts-download', 'ContactsController@download')->middleware('x.api.key');
 
-Route::get('labels', 'LabelsController@get');
+Route::get('labels', 'LabelsController@get')->middleware('x.api.key');
 
 // Route::get('v1/ping', 'AlertsController@ping')->middleware('x.api.key');
 // Route::get('v1/alerts', 'AlertsController@listGet')->middleware('x.api.key');
