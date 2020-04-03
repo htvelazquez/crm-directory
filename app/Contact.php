@@ -19,4 +19,5 @@ class Contact extends Model
     {
         return config('services.slack.webhook');
     }
+
 }

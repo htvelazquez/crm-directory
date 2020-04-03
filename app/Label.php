@@ -4,18 +4,18 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Language extends Model
+class Label extends Model
 {
     protected $fillable = [
         'name',
-        'label',
-        'iso2code',
+        'account_id',
+        'color',
         'created_at',
         'updated_at'
     ];
 
-    public function metadata() {
-        return $this->belongsTo('App\LanguageMetadata');
+    public function account() {
+        return $this->belongsTo('App\Account');
     }
 
 }
