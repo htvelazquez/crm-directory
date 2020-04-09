@@ -8,13 +8,14 @@ class SnapshotExperience extends Model
 {
     protected $fillable = [
         'snapshot_id',
-        'company_id', 
-        'jobTitle', 
-        'from', 
+        'company_id',
+        'jobTitle',
+        'from',
         'to',
+        'main_position',
         'before_diff',
         'after_diff',
-        'created_at', 
+        'created_at',
         'updated_at'
     ];
 
