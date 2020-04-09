@@ -86,6 +86,8 @@ class SnapshotsController extends Controller
         $snapshot = Snapshot::create($snapshotData);
 
         if (!empty($request->fullExperience)) {
+            $i = 0;
+            $mainPositionIndex = $this->getMainPositionIndex($request->fullExperience);
             foreach($request->fullExperience as $experience) {
                 $companyName = $this->normalizeString($experience['companyName']);
                 $companyData = [
@@ -117,10 +119,12 @@ class SnapshotsController extends Controller
                     'jobTitle'      => $experience['jobTitle'],
                     'from'          => date('Y-m-d', strtotime($experience['from'])),
                     'to'            => !empty($experience['to']) ? date('Y-m-d', strtotime($experience['to'])) : null,
-                    'company_id'    => $company->id,
+                    'main_position' => ($i === $mainPositionIndex)? TRUE : FALSE,
+                    'company_id'    => $company->id
                 ];
 
                 $snapshotExperience = SnapshotExperience::create($experienceData);
+                $i++;
             }
         }
 
@@ -276,6 +280,41 @@ class SnapshotsController extends Controller
 
         $string = preg_replace("/[\s_]/", "-", $string);
         return $string;
+    }
+
+    private function getMainPositionIndex($experiences) {
+        $i = 0;
+        $index = null;
+        foreach($experiences as $experience) {
+            if (empty($experience['to'])){ // is currently working here
+                $experienceFrom = date('Y-m-d', strtotime($experience['from']));
+                if (empty($lastFrom) || $lastFrom < $experienceFrom){
+                    $lastFrom = $experienceFrom;
+                    $index = $i;
+                }
+            }
+            $i++;
+        }
+
+        if ($index === null) { // no open positions, let's go for the most recent
+            $lastFrom = null;
+            $j = 0;
+            foreach($experiences as $experience) {
+                $experienceFrom = date('Y-m-d', strtotime($experience['from']));
+                if (empty($lastFrom) || $lastFrom < $experienceFrom){
+                    $lastFrom = $experienceFrom;
+                    $index = $j;
+                }
+                $j++;
+            }
+        }
+
+        if ($index === null) {
+            $keys = array_keys($experiences);
+            $index = end($keys);
+        }
+
+        return $index;
     }
 
 }
