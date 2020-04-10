@@ -99,7 +99,7 @@ class ContactsController extends Controller
 
         $sql = "FROM account_contacts ac
             INNER JOIN (
-            	SELECT MAX(id) id, contact_id
+            	SELECT MAX(id) id, contact_id, MAX(updated_at) updated_at
                 FROM snapshots
                 $whereContactLabels
                 GROUP BY contact_id
@@ -108,7 +108,8 @@ class ContactsController extends Controller
             INNER JOIN companies com ON (com.id = sex.company_id)
             INNER JOIN snapshot_metadatas met ON (met.snapshot_id = s.id)
             INNER JOIN locations loc ON (met.location_id = loc.id $whereLocation)
-            WHERE ac.account_id = $accountId $subQueryLang";
+            WHERE ac.account_id = $accountId $subQueryLang
+            ORDER BY s.updated_at DESC";
         // $whereStart
         // $whereEnd";
 
@@ -248,7 +249,7 @@ class ContactsController extends Controller
                     (!empty($line->publicURL))? "https://www.linkedin.com/in/{$line->publicURL}" : '-',
                     $line->jobTitle,
                     $line->company,
-                    (!empty($line->link))? "https://www.linkedin.com/company/{$line->link}" : '-',                    
+                    (!empty($line->link))? "https://www.linkedin.com/company/{$line->link}" : '-',
                     $line->from,
                     $line->location,
                     $line->labels,
