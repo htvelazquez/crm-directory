@@ -86,6 +86,8 @@ class SnapshotsController extends Controller
         $snapshot = Snapshot::create($snapshotData);
 
         if (!empty($request->fullExperience)) {
+            $i = 0;
+            $mainPositionIndex = $this->getMainPositionIndex($request->fullExperience);
             foreach($request->fullExperience as $experience) {
                 $companyName = $this->normalizeString($experience['companyName']);
                 $companyData = [
@@ -117,10 +119,12 @@ class SnapshotsController extends Controller
                     'jobTitle'      => $experience['jobTitle'],
                     'from'          => date('Y-m-d', strtotime($experience['from'])),
                     'to'            => !empty($experience['to']) ? date('Y-m-d', strtotime($experience['to'])) : null,
-                    'company_id'    => $company->id,
+                    'main_position' => ($i === $mainPositionIndex)? TRUE : FALSE,
+                    'company_id'    => $company->id
                 ];
 
                 $snapshotExperience = SnapshotExperience::create($experienceData);
+                $i++;
             }
         }
 
@@ -130,13 +134,11 @@ class SnapshotsController extends Controller
                 $locationName = $request->fullExperience[0]['location'];
             }
 
-            $name = $this->normalizeString($locationName);
-            $locationData = [
-                'name'  => $name,
-                'label' => $locationName
-            ];
-
-            $location = Location::firstOrCreate($locationData);
+            $location = Location::firstOrNew(['name' => $this->normalizeString($locationName)]);
+            if (empty($location->id)){
+                $location->label = $locationName;
+                $location->save();
+            }
 
             $snapshotMetadataData = [
                 'snapshot_id'   => $snapshot->id,
@@ -182,26 +184,24 @@ class SnapshotsController extends Controller
                     }
 
                     $fieldName = $this->normalizeString($fieldLabel);
-
-                    $studyFieldData = [
-                        'name'  => $fieldName,
-                        'label' => $fieldLabel
-                    ];
-
-                    $studyField = StudyField::firstOrCreate($studyFieldData);
+                    $studyField = StudyField::firstOrNew(['name' => $fieldName]);
+                    if (empty($studyField->id)){
+                        $studyField->label = $fieldLabel;
+                        $studyField->save();
+                    }
                 }
 
                 if (!empty($education['schoolName'])) {
 
                     // @// TODO: fieldOfStudy: "Relaciones del trabajo"
 
-                    $schoolData = [
-                        'name'  => $this->normalizeString($education['schoolName']),
-                        'label' => $education['schoolName'],
-                        'linkedin_id' => $education['schoolId'],
-                    ];
+                    $school = School::firstOrNew(['name' => $this->normalizeString($education['schoolName'])]);
+                    if (empty($school->id)){
+                        $school->label = $education['schoolName'];
+                        $school->linkedin_id = $education['schoolId'];
+                        $school->save();
+                    }
 
-                    $school = School::firstOrCreate($schoolData);
                 }
 
                 $snapshotEducationData = [
@@ -218,12 +218,11 @@ class SnapshotsController extends Controller
 
         if (!empty($request->skills)) {
             foreach($request->skills as $skillItem) {
-                $skillData = [
-                    'name' => $this->normalizeString($skillItem['name']),
-                    'label' => $skillItem['name']
-                ];
-
-                $skill = Skill::firstOrCreate($skillData);
+                $skill = Skill::firstOrNew(['name' => $this->normalizeString($skillItem['name'])]);
+                if (empty($skill->id)){
+                    $skill->label = $skillItem['name'];
+                    $skill->save();
+                }
 
                 $snapshotSkillData = [
                     'snapshot_id' => $snapshot->id,
@@ -236,13 +235,11 @@ class SnapshotsController extends Controller
 
         if (!empty($request->languages)) {
             foreach($request->languages as $languageItem) {
-
-                $languageData = [
-                    'name' => $this->normalizeString($languageItem['name']),
-                    'label' => $languageItem['name']
-                ];
-
-                $language = Language::firstOrCreate($languageData);
+                $language = Language::firstOrNew(['name' => $this->normalizeString($languageItem['name'])]);
+                if (empty($language->id)){
+                    $language->label = $languageItem['name'];
+                    $language->save();
+                }
 
                 $snapshotLanguageData = [
                     'snapshot_id' => $snapshot->id,
@@ -276,6 +273,41 @@ class SnapshotsController extends Controller
 
         $string = preg_replace("/[\s_]/", "-", $string);
         return $string;
+    }
+
+    private function getMainPositionIndex($experiences) {
+        $i = 0;
+        $index = null;
+        foreach($experiences as $experience) {
+            if (empty($experience['to'])){ // is currently working here
+                $experienceFrom = date('Y-m-d', strtotime($experience['from']));
+                if (empty($lastFrom) || $lastFrom < $experienceFrom){
+                    $lastFrom = $experienceFrom;
+                    $index = $i;
+                }
+            }
+            $i++;
+        }
+
+        if ($index === null) { // no open positions, let's go for the most recent
+            $lastFrom = null;
+            $j = 0;
+            foreach($experiences as $experience) {
+                $experienceFrom = date('Y-m-d', strtotime($experience['from']));
+                if (empty($lastFrom) || $lastFrom < $experienceFrom){
+                    $lastFrom = $experienceFrom;
+                    $index = $j;
+                }
+                $j++;
+            }
+        }
+
+        if ($index === null) {
+            $keys = array_keys($experiences);
+            $index = end($keys);
+        }
+
+        return $index;
     }
 
 }
